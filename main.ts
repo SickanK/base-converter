@@ -3,6 +3,11 @@ function digitToChar(digit: number): string {
   return chars[digit]
 }
 
+function charToDigit(char: string): number {
+  const chars = "0123456789ABCDEFGHJIJKLMNOPQRSTUVWXYZ"
+  return chars.indexOf(char)
+}
+
 function toBaseN(number: number, base: number): string {
   if (number === 0) return "0"
 
@@ -15,8 +20,16 @@ function toBaseN(number: number, base: number): string {
   return digits.reverse().join("")
 }
 
-console.log(toBaseN(50, 36))
+function fromBaseN(numberString: string, base: number) {
+  const reverseNumberString = numberString.split("").reverse().join("");
+  let number = 0
+  for (let i = 0; i < reverseNumberString.length; i++) {
+    number += charToDigit(reverseNumberString[i]) * (base ** i)
+  }
+  return number
+}
 
-//
-function fromBaseN(number, base) {
+function convertBase(numberString: string, baseA: number, baseB: number) {
+  const decimalNumber = fromBaseN(numberString, baseA)
+  return toBaseN(decimalNumber, baseB)
 }
