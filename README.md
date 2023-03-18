@@ -2,9 +2,9 @@
 
 ## Description
 
-**AREAS:** Number Theory
-**LEVEL:** Hardest
-**TYPE:** Open
+**AREAS:** Number Theory<br />
+**LEVEL:** Hardest<br />
+**TYPE:** Open<br />
 
 The program to be created is a number converter that can handle numbers in different number systems with the ability to use letters from the alphabet as digits to represent numbers in bases greater than 10.
 
@@ -20,9 +20,9 @@ To meet the level Hardest, the creator should demonstrate a good mathematical un
 
 ## Beskrivning
 
-**OMRÅDEN:** Talteori, Kongruens
-**NIVÅ:** Svårast
-**TYP:** Öppen
+**OMRÅDEN:** Talteori, Kongruens<br />
+**NIVÅ:** Svårast<br />
+**TYP:** Öppen<br />
 
 Programmet som ska skapas är en talomvandlare som kan hantera tal i olika talbaser med möjlighet att använda bokstäver från alfabetet som siffror för att representera tal i baser större än 10.
 
