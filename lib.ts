@@ -21,12 +21,21 @@ function encodeInBase(number: number, base: number): string {
 }
 
 function decodeFromBase(numberString: string, base: number): number {
-  const reversedNumberString = numberString.split("").reverse().join("");
-  let number = 0
-  for (let i = 0; i < reversedNumberString.length; i++) {
-    number += characterToDigit(reversedNumberString[i]) * (base ** i)
+  const numberStringLength = numberString.length;
+  let number = 0;
+  for (let i = 0; i < numberStringLength; i++) {
+    number += characterToDigit(numberString[numberStringLength - 1 - i]) * (base ** i);
   }
-  return number
+  return number;
+}
+
+function decodeFractionsFromBase(numberString: string, base: number): number {
+  const numberStringLength = numberString.length;
+  let number = 0;
+  for (let i = 0; i < numberStringLength; i++) {
+    number += characterToDigit(numberString[i]) * (base ** -(i + 1));
+  }
+  return number;
 }
 
 function splitWholeAndFractional(number: number): [number, number] {
@@ -48,7 +57,6 @@ function convertFractionalPart(decimalPart: string, base: number, maxPrecision: 
 
   return fractionalBaseN.join("")
 }
-
 export function convertNumberBase(numberString: string, baseA: number, baseB: number) {
   const wholePart = numberString.split(".")[0]
   let wholeInBaseB = ""
@@ -64,8 +72,8 @@ export function convertNumberBase(numberString: string, baseA: number, baseB: nu
   let fractionalInBaseB = ""
 
   if (decimalPart) {
-    const fractionalNumber = decodeFromBase(decimalPart, baseA)
-    fractionalInBaseB = convertFractionalPart(fractionalNumber.toString(), baseB)
+    const fractionalNumber = decodeFractionsFromBase(decimalPart, baseA)
+    fractionalInBaseB = convertFractionalPart(fractionalNumber.toString().split(".")[1], baseB)
   } else {
     return wholeInBaseB
   }
